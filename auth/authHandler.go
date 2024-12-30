@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// 登录请求处理
-func loginHandler(w http.ResponseWriter, r *http.Request) {
+// LoginHandler 登录请求处理
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
 	password := r.FormValue("password")
 
@@ -30,8 +30,8 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf(`{"token":"%s"}`, token)))
 }
 
-// 受保护的资源处理
-func protectedHandler(w http.ResponseWriter, r *http.Request) {
+// ProtectedHandler 受保护的资源处理
+func ProtectedHandler(w http.ResponseWriter, r *http.Request) {
 	// 获取请求中的Authorization头部
 	authHeader := r.Header.Get("Authorization")
 	if !strings.HasPrefix(authHeader, "Bearer ") {
